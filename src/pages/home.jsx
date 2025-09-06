@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ProgressBar from "../components/progressBar";
+import ChessBoardUI from "../components/chessBoardUI";
+import Counter from "../components/counter";
 
 function Home() {
   const [completedPercent, setCompletedPercent] = useState(0);
@@ -23,7 +25,12 @@ function Home() {
   return (
     <>
       <div className="text-red-500">Namaste Duniya</div>
-      <ProgressBar completedPercent={completedPercent} />
+      {/* {
+        completedPercent === 100 ?
+        <ChessBoardUI /> :
+        <ProgressBar completedPercent={completedPercent} />} */}
+
+        <Counter />
     </>
   );
 }
