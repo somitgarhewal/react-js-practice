@@ -5,6 +5,7 @@ import Practice from "./pages/practice";
 import React, { useReducer } from "react";
 import FolderDirectory from "./pages/folderDirectory";
 import ScrollPagination from "./pages/scrollPagination";
+import Tempo from "./pages/tempo";
 
 export const CounterContext = React.createContext();
 
@@ -35,6 +36,7 @@ console.log(count);
           <Route path="/practice" element={<Practice />} />
           <Route path="/folder-directory" element={<FolderDirectory />} />
           <Route path="/scroll-pagination" element={<ScrollPagination />} />
+          <Route path="/tempo-task" element={<Tempo />} />
         </Routes>
       </BrowserRouter>
     </CounterContext.Provider>
