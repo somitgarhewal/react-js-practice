@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Title from '../components/title';
 import usePagination from '../hooks/usePagination';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 50;
 function Tempo() {
     const [data, setData] = useState([])
     useEffect(() => {
@@ -21,11 +21,13 @@ function Tempo() {
         data ?
             <div>
                 {currentItems.map(item => <Title id={item} />)}
-                <button onClick={() => handlePrev()}>Prev</button>
-                {[...Array(Math.ceil(data.length / ITEMS_PER_PAGE)).keys()].map((_, i) => i + 1).map(page =>
-                    <button style={{ background: page === currentPage && 'blue'  }} key={page} onClick={() => handlePageClick(page)}>{page}</button>
-                )}
-                <button onClick={() => handleNext()}>Next</button>
+                <div className='flex gap-2 mt-4 justify-center'>
+                    <button className='border rounded-md p-1' onClick={() => handlePrev()}>Prev</button>
+                    {[...Array(Math.ceil(data.length / ITEMS_PER_PAGE)).keys()].map((_, i) => i + 1).map(page =>
+                        <button className='border rounded-md p-1 cursor-pointer' style={{ background: page === currentPage && 'blue' }} key={page} onClick={() => handlePageClick(page)}>{page}</button>
+                    )}
+                    <button className='border rounded-md p-1' onClick={() => handleNext()}>Next</button>
+                </div>
 
                 {/* {data?.map(item => <Title id={item} />)} */}
             </div>
