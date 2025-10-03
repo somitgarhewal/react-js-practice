@@ -10,6 +10,7 @@ import Tempo from "./pages/tempo";
 export const CounterContext = React.createContext();
 import Figma from "./pages/figma";
 import './index.css'
+import TrafficLight from "./pages/trafficLight";
 
 const initialState = {
   count: 0,
@@ -40,6 +41,7 @@ console.log(count);
           <Route path="/scroll-pagination" element={<ScrollPagination />} />
           <Route path="/tempo-task" element={<Tempo />} />
           <Route path="/figma" element={<Figma />} />
+          <Route path='/traffic-light' element={<TrafficLight />}/>
         </Routes>
       </BrowserRouter>
     </CounterContext.Provider>
