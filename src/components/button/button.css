@@ -1,0 +1,24 @@
+.primaryButton {
+    background: #033ccd;
+    border: 1px solid rgb(28, 10, 165);
+}
+
+.secondaryButton {
+    background: rgb(8, 189, 206)3ccd;
+    border: 1px solid rgb(18, 128, 238);
+}
+
+.button {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+.buttonIcon {
+    width: 12px;
+    height: 12px;
+}

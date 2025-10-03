@@ -8,6 +8,8 @@ import ScrollPagination from "./pages/scrollPagination";
 import Tempo from "./pages/tempo";
 
 export const CounterContext = React.createContext();
+import Figma from "./pages/figma";
+import './index.css'
 
 const initialState = {
   count: 0,
@@ -37,6 +39,7 @@ console.log(count);
           <Route path="/folder-directory" element={<FolderDirectory />} />
           <Route path="/scroll-pagination" element={<ScrollPagination />} />
           <Route path="/tempo-task" element={<Tempo />} />
+          <Route path="/figma" element={<Figma />} />
         </Routes>
       </BrowserRouter>
     </CounterContext.Provider>
