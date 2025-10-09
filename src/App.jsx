@@ -1,53 +1,34 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
-import Practice from "./pages/practice";
-import React, { useReducer } from "react";
-import FolderDirectory from "./pages/folderDirectory";
-import ScrollPagination from "./pages/scrollPagination";
-import Tempo from "./pages/tempo";
+import './App.css';
+import React, {useState, useEffect} from 'react';
 
-export const CounterContext = React.createContext();
-import Figma from "./pages/figma";
-import './index.css'
-import TrafficLight from "./pages/trafficLight";
-import FileExplorer from "./pages/fileExplorer";
-
-const initialState = {
-  count: 0,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "increament":
-      return { ...state, count: state.count + action.diff };
-    case "decreament":
-      return { ...state, count: state.count - action.diff };
-    case "reset":
-      return { ...state, count: initialState.count };
-  }
-};
 function App() {
-  const [count, dispatch] = useReducer(reducer, initialState);
-console.log(count);
+    const [products, setProducts] = useState(null)
+
+    useEffect(() => {
+        fetch("https://dummyjson.com/products").then((res) => res.json()).then(data => {
+            setProducts(data.products)
+    })
+    }, [])
 
   return (
-    <CounterContext.Provider value={{ count: count, dispatch: dispatch }}>
-       {/* {count?.count} */}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/practice" element={<Practice />} />
-          <Route path="/folder-directory" element={<FolderDirectory />} />
-          <Route path="/scroll-pagination" element={<ScrollPagination />} />
-          <Route path="/tempo-task" element={<Tempo />} />
-          <Route path="/figma" element={<Figma />} />
-          <Route path='/traffic-light' element={<TrafficLight />}/>
-          <Route path='/file-explorer' element={<FileExplorer />}/>
-        </Routes>
-      </BrowserRouter>
-    </CounterContext.Provider>
+    <div className="w-screen bg-gray-500 grid grid-cols-6 gap-4">
+      {products?.map(product => <Productcard title={product.title} price={product.price} thumbnail={product.thumbnail} />)}
+    </div>
   );
 }
 
 export default App;
+
+
+const Productcard = ({title, price, thumbnail}) => {
+    return(
+        <div className='border-2 border-white rounded-md lg:col-span-2 md:col-span-3 col-span-6 bg-black'>
+            <h2>{title}</h2>
+            <img src={thumbnail} />
+            <div>{price}</div> 
+        </div>
+    )
+}
+
+// const url = "https://dummyjson.com/products";
+// title price and thumbnail

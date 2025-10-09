@@ -28,8 +28,6 @@ function Tempo() {
                     )}
                     <button className='border rounded-md p-1' onClick={() => handleNext()}>Next</button>
                 </div>
-
-                {/* {data?.map(item => <Title id={item} />)} */}
             </div>
             : <div>Loading...</div>
     )
